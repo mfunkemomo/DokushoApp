@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">DokushoApp</string>
+    <string name="welcome_to_dokusho">Welcome to Dokusho!</string>
+    <string name="select_level">Let\'s begin reading. Select your reading level.</string>
+    <string name="level_1">Level 1</string>
+    <string name="level_2">Level 2</string>
 </resources>
