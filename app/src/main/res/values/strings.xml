@@ -7,4 +7,7 @@
     <string name="level_books_header">Level 1 Books</string>
     <string name="select_a_book">Select a book.</string>
     <string name="book_1">Book 1</string>
+    <string name="book_title">Book Title</string>
+    <string name="story_content">Filler Story Content</string>
+    <string name="fake_answer_1">Fake answer 1</string>
 </resources>
