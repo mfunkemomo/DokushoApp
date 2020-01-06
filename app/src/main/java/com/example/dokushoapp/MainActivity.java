@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+
 public class MainActivity extends AppCompatActivity {
 
     private Button selectedLevel;
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 Intent intent = new Intent(MainActivity.this, BooksMenu.class);
+                intent.putExtra("level", 1);
                 startActivity(intent);
             }
         });

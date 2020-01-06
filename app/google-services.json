@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "692485812046",
+    "firebase_url": "https://dokushoapp.firebaseio.com",
+    "project_id": "dokushoapp",
+    "storage_bucket": "dokushoapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:692485812046:android:2a0ad444393ab964ca781f",
+        "android_client_info": {
+          "package_name": "com.example.dokushoapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "692485812046-b0ulnt7lki88ribffngokv52c11qh4vv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dokushoapp",
+            "certificate_hash": "14fdcc6811fca6e5548f78b2fe4d327c407d833d"
+          }
+        },
+        {
+          "client_id": "692485812046-kmmh3tv85gs8m2id6ehku415bb0j6qco.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaawyl6XlYzBJO5LFC5TU14MAZwH_ioWI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "692485812046-kmmh3tv85gs8m2id6ehku415bb0j6qco.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
