@@ -13,9 +13,6 @@ public class MainActivity extends AppCompatActivity {
 
     private Button selectedLevel;
 
-    //Connection to Firebase
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 Intent intent = new Intent(MainActivity.this, BooksMenu.class);
+                intent.putExtra("level", 1);
                 startActivity(intent);
             }
         });
