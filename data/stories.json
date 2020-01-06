@@ -1,0 +1,30 @@
+[
+  {
+    "level": 1,
+    "title": "さるちゃんのかんじょう",
+    "titleTranslation": "Monkey's Emotions",
+    "author": "ケオ　モモ",
+    "authorTranslation": "Momo Keo",
+    "pages": [
+      {"content": "さるちゃんはうれしい。", "translation": "Monkey is happy.", "fakeTranslations": ["Monkey is sad.", "Monkey is angry."]},
+      {"content": "さるちゃんはペコペコだ。", "translation": "Monkey is hungry.", "fakeTranslations": ["Monkey is tired.", "Monkey is bored."]},
+      {"content": "さるちゃんはたいくつしている。", "translation": "Monkey is bored.", "fakeTranslations": ["Monkey is ready to sleep.", "Monkey wants to play."]},
+      {"content": "だから、さるちゃんは寝ていた。", "translation": "So monkey went to sleep.", "fakeTranslations": ["So monkey was really upset.", "Monkey became really tired."]},
+      {"content": "おわり", "translation": "The end."}
+    ]
+  },
+  {
+    "level": 2,
+    "title": "さるちゃんはおなかがすいている",
+    "titleTranslation": "",
+    "author": "ケオ　モモ",
+    "authorTranslation": "Momo Keo",
+    "pages": [
+      {"content": "さるちゃんはおなかがすいている。どうしよう？", "translation": "Monkey is hungry. What should he do?", "fakeTranslations": ["Monkey is bored. Where is everyone?", "Monkey is upset. Who can cheer him up?"]},
+      {"content": "家で、さるちゃんは食べ物をさがしている。", "translation": "Monkey looks for food at home.", "fakeTranslations": ["Monkey looks for others at home.", "Monkey looks for food."]},
+      {"content": "ピーザを見つけた！", "translation": "He found pizza!", "fakeTranslations": ["It's pizza!", "There's pizza!"]},
+      {"content": "ピーザを全部食べちゃて。さるちゃんはとても嬉しかった。", "translation": "He ate all of the pizza and monkey is very happy.", "fakeTranslations": ["Monkey shared the pizza and is very happy.", "Monkey ate the pizza and did not share."]},
+      {"content": "おわり", "translation": "The end."}
+    ]
+  }
+]
