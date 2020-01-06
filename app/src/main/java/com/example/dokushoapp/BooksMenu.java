@@ -7,9 +7,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 public class BooksMenu extends AppCompatActivity {
 
     private Button selectedBook;
+
+    //get all the stories with the appropriate levels
+    // ex. stories_level1 = db.stories.level1
+
+    //Connection to Firebase
+//    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+//    private DocumentReference dbStories = db.collection("Stories");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
