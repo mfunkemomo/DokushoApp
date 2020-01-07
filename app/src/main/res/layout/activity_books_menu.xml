@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="148dp"
         android:text="@string/level_books_header"
-        android:textSize="24sp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -21,7 +21,7 @@
         android:id="@+id/select_book"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="24dp"
         android:text="@string/select_a_book"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,14 +29,42 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/books_menu_header" />
 
-    <Button
-        android:id="@+id/book1_button"
-        android:layout_width="307dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="80dp"
-        android:text="@string/book_1"
+    <TextView
+        android:id="@+id/bookTitleAuthor"
+        android:layout_width="311dp"
+        android:layout_height="98dp"
+        android:layout_marginTop="60dp"
+        android:text="@string/book_title_and_author"
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/select_book" />
+
+    <!--    <Button-->
+<!--        android:id="@+id/book1_button"-->
+<!--        android:layout_width="307dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:layout_marginTop="80dp"-->
+<!--        android:text="@string/book_1"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.498"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/select_book" />-->
+
+    <!--    <android.support.v4.widget.NestedScrollView-->
+<!--        android:layout_width="385dp"-->
+<!--        android:layout_height="177dp"-->
+<!--        android:layout_marginTop="436dp"-->
+<!--        android:padding="9dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent">-->
+
+<!--        <Button-->
+<!--            android:id="@+id/book1_button"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textSize="28sp" />-->
+<!--    </android.support.v4.widget.NestedScrollView>-->
+
 </androidx.constraintlayout.widget.ConstraintLayout>
