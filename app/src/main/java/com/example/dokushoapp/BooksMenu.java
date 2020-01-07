@@ -78,7 +78,7 @@ public class BooksMenu extends AppCompatActivity {
                         Story story = snapshots.toObject(Story.class);
 
                         data += story.getTitle() + " \n"
-                                + "By" + story.getAuthor() + "\n\n" ;
+                                + "By " + story.getAuthor() + "\n\n" ;
 
                     }
                     bookSelection.setText(data);

@@ -31,8 +31,8 @@
 
     <TextView
         android:id="@+id/bookTitleAuthor"
-        android:layout_width="260dp"
-        android:layout_height="43dp"
+        android:layout_width="311dp"
+        android:layout_height="98dp"
         android:layout_marginTop="60dp"
         android:text="@string/book_title_and_author"
         android:textSize="22sp"
