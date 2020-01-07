@@ -53,6 +53,7 @@ public class BooksMenu extends AppCompatActivity {
 
         Log.d(TAG, "onCreate: before getStories");
         getStories();
+        Log.d(TAG, "onCreate: after getStories");
 
         bookSelection.setOnClickListener(new View.OnClickListener(){
             @Override
