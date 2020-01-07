@@ -30,9 +30,9 @@ import javax.annotation.Nullable;
 
 public class BooksMenu extends AppCompatActivity {
 
+    private static final String TAG = "BooksMenu";
     private TextView bookSelection;
     private TextView booksMenuHeader;
-    private static final String TAG = "BooksMenu";
 
     //Connection to Firebase
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -47,10 +47,11 @@ public class BooksMenu extends AppCompatActivity {
         int level = getIntent().getIntExtra("level", 1);
         bookSelection = findViewById(R.id.bookTitleAuthor);
 
+        String booksMenuHeaderText = "Level " + String.valueOf(level) + " Books";
         booksMenuHeader = findViewById(R.id.books_menu_header);
-        booksMenuHeader.setText("Level " + String.valueOf(level) + " Books");
-        Log.d(TAG, "onCreate: able to retrieve level before getStories");
+        booksMenuHeader.setText(booksMenuHeaderText);
 
+        Log.d(TAG, "onCreate: before getStories");
         getStories();
 
         bookSelection.setOnClickListener(new View.OnClickListener(){
