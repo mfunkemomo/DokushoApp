@@ -11,4 +11,6 @@
     <string name="story_content">Filler Story Content</string>
     <string name="fake_answer_1">Fake answer 1</string>
     <string name="book_title_and_author">Book title and author here</string>
+    <string name="fake_answer_2">Fake Answer 2</string>
+    <string name="correct_answer">Correct Answer</string>
 </resources>

@@ -46,7 +46,7 @@
         android:layout_width="240dp"
         android:layout_height="42dp"
         android:layout_marginTop="20dp"
-        android:text="Fake Answer 2"
+        android:text="@string/fake_answer_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fake_answer_button_1" />
@@ -56,7 +56,7 @@
         android:layout_width="240dp"
         android:layout_height="42dp"
         android:layout_marginTop="20dp"
-        android:text="Correct Answer"
+        android:text="@string/correct_answer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"

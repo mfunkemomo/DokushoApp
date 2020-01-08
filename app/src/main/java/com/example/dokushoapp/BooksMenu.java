@@ -57,6 +57,7 @@ public class BooksMenu extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 Intent intent = new Intent(BooksMenu.this, StoryPage.class);
+                intent.putExtra("storyId", "WyxihCAXfic0F2nveXRC");
                 startActivity(intent);
             }
         });
