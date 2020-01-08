@@ -44,14 +44,14 @@ public class BooksMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_books_menu);
 
-        int level = getIntent().getIntExtra("level", 1);
+        int selectedLevel = getIntent().getIntExtra("level", 1);
         bookSelection = findViewById(R.id.bookTitleAuthor);
 
-        String booksMenuHeaderText = "Level " + String.valueOf(level) + " Books";
+        String booksMenuHeaderText = "Level " + String.valueOf(selectedLevel) + " Books";
         booksMenuHeader = findViewById(R.id.books_menu_header);
         booksMenuHeader.setText(booksMenuHeaderText);
 
-        getStories();
+        getStories(selectedLevel);
 
         bookSelection.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -62,7 +62,7 @@ public class BooksMenu extends AppCompatActivity {
         });
     }
 
-    private void getStories(){
+    private void getStories(final int selectedLevel){
 
         dbStories.get()
             .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -70,13 +70,18 @@ public class BooksMenu extends AppCompatActivity {
                 public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
 
                     String data = "";
+
                     for (QueryDocumentSnapshot snapshots : queryDocumentSnapshots) {
+
+                            Story story = snapshots.toObject(Story.class);
+
+                            if (story.getLevel() == selectedLevel){
+
+                                data += story.getTitle() + " \n"
+                                        + "By " + story.getAuthor() + "\n\n" ;
+                            }
+
                         Log.d(TAG, "onSuccess: " + snapshots.getId());
-
-                        Story story = snapshots.toObject(Story.class);
-
-                        data += story.getTitle() + " \n"
-                                + "By " + story.getAuthor() + "\n\n" ;
 
                     }
                     bookSelection.setText(data);
