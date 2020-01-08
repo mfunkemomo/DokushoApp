@@ -51,9 +51,7 @@ public class BooksMenu extends AppCompatActivity {
         booksMenuHeader = findViewById(R.id.books_menu_header);
         booksMenuHeader.setText(booksMenuHeaderText);
 
-        Log.d(TAG, "onCreate: before getStories");
         getStories();
-        Log.d(TAG, "onCreate: after getStories");
 
         bookSelection.setOnClickListener(new View.OnClickListener(){
             @Override
