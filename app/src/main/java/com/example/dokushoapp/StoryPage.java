@@ -17,6 +17,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.sql.Array;
 import java.util.Arrays;
+import java.util.Objects;
 
 public class StoryPage extends AppCompatActivity {
 
@@ -49,20 +50,21 @@ public class StoryPage extends AppCompatActivity {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
 
-                        String content = "";
+                        String sentence = "";
+//                        Objects[] pages = new Objects[5];
 
                         for (QueryDocumentSnapshot snapshots : queryDocumentSnapshots) {
 
                             Story story = snapshots.toObject(Story.class);
 
-                            Array pages = story.getPages();
+                            sentence = story.getPages()[0].content;
 
-                            content = pages[0].content;
+//                            sentence = pages[0].content;
 
-                            Log.d(TAG, "onSuccess Pages: " + content);
+                            Log.d(TAG, "onSuccess Pages: " + sentence);
 
                         }
-                        storyContent.setText(content);
+                        storyContent.setText(sentence);
 //
                     }
                 })

@@ -2,12 +2,13 @@ package com.example.dokushoapp;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Story {
     private String title;
     private String author;
     private int level;
-    private Array pages;
+    private Objects[] pages;
 
     //empty constructor for Firebase
     public Story(){ }
@@ -24,7 +25,7 @@ public class Story {
         return level;
     }
 
-    public Array getPages() {
+    public Objects[] getPages() {
         return pages;
     }
 }
