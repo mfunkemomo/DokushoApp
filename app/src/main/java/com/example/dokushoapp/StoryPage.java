@@ -10,19 +10,16 @@ import android.widget.TextView;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-
-import java.sql.Array;
-import java.util.Arrays;
-import java.util.Objects;
 
 public class StoryPage extends AppCompatActivity {
 
     private static final String TAG = "StoryPage";
     private TextView storyContent;
+    private Page[] pages;
+    private String sentence;
 
     //Connection to Firebase
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -34,38 +31,46 @@ public class StoryPage extends AppCompatActivity {
         setContentView(R.layout.activity_story_page);
 
         String storyId = getIntent().getStringExtra("storyId");
-        Log.d(TAG, "onSuccess, storyid: " + storyId);
+//        Log.d(TAG, "onSuccess, storyid: " + storyId);
 
         storyContent = findViewById(R.id.story_content);
 
-        getStory(storyId);
+        pages = getStory(storyId);
 
+        sentence = pages[0].getContent();
+
+        storyContent.setText(sentence);
+//
     }
 
-    private void getStory(String storyId) {
+    private Page[] getStory(final String storyId) {
 
-        dbStories.document(storyId)
-                .get()
+        dbStories.get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-
-                        String sentence = "";
-//                        Objects[] pages = new Objects[5];
 
                         for (QueryDocumentSnapshot snapshots : queryDocumentSnapshots) {
 
                             Story story = snapshots.toObject(Story.class);
 
-                            sentence = story.getPages()[0].content;
+                            if (snapshots.getId().equals(storyId)){
+                                Log.d(TAG, "onSuccess: " + snapshots.getId());
 
-//                            sentence = pages[0].content;
+                                Page[] allPages = story.getPages();
+                                Log.d(TAG, "onSuccess: " + allPages);
 
-                            Log.d(TAG, "onSuccess Pages: " + sentence);
+//                                for (int i=0; i<allPages.length, int i++){
+//                                    Page[] pages += story.getPages().toObject(Page.class);
+//                                    i++;
+//                                }
+
+                                return allPages;
+//                                Log.d(TAG, "onSuccess: " + snapshots.getId());
+                            }
 
                         }
-                        storyContent.setText(sentence);
-//
+
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -75,4 +80,27 @@ public class StoryPage extends AppCompatActivity {
                     }
                 });
     }
+
+//        dbStories.document(storyId)
+//                .get()
+//                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+//                    @Override
+//                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+//
+//                        Story story = QueryDocumentSnapshot.toObject(Story.class);
+//                        Log.d(TAG, "onSuccess Story: " + story);
+//
+//                        pages = story.getPages().toObject(Page.class);
+//
+//                        return pages;
+//
+//                    }
+//                })
+//                .addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        Log.d(TAG, "onError: " + e.toString());
+//                    }
+//                });
+//    }
 }

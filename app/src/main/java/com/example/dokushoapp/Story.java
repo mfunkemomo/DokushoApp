@@ -8,7 +8,7 @@ public class Story {
     private String title;
     private String author;
     private int level;
-    private Objects[] pages;
+    private Page[] pages;
 
     //empty constructor for Firebase
     public Story(){ }
@@ -25,7 +25,7 @@ public class Story {
         return level;
     }
 
-    public Objects[] getPages() {
+    public Page[] getPages() {
         return pages;
     }
 }
