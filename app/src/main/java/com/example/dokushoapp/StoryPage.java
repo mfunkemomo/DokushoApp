@@ -57,16 +57,13 @@ public class StoryPage extends AppCompatActivity {
                             if (snapshots.getId().equals(storyId)){
                                 Log.d(TAG, "onSuccess: " + snapshots.getId());
 
-                                Page[] allPages = story.getPages();
-                                Log.d(TAG, "onSuccess: " + allPages);
+                                Page[] storyPages = story.getPages();
 
-//                                for (int i=0; i<allPages.length, int i++){
-//                                    Page[] pages += story.getPages().toObject(Page.class);
-//                                    i++;
+//                                for (Page onePage : pages){
+//                                    pages += onePage.toObject(Page.class);
 //                                }
 
-                                return allPages;
-//                                Log.d(TAG, "onSuccess: " + snapshots.getId());
+                                return storyPages;
                             }
 
                         }
