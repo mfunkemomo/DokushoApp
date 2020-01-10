@@ -7,7 +7,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -34,10 +37,11 @@ import javax.annotation.Nullable;
 public class BooksMenu extends AppCompatActivity {
 
     private static final String TAG = "BooksMenu";
-    private TextView bookSelection;
     private TextView booksMenuHeader;
-    private String snapshotId;
     private List<String> storyIdCollection;
+    private ListView booksListView;
+    private ArrayList<String> storyArrayList;
+    private ArrayAdapter storyArrayAdapter;
 
     //Connection to Firebase
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -48,10 +52,13 @@ public class BooksMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_books_menu);
+
+        booksListView = findViewById(R.id.books_list_view);
+        storyArrayList = new ArrayList<>();
+
         storyIdCollection = new ArrayList<>();
 
         int selectedLevel = getIntent().getIntExtra("level", 1);
-        bookSelection = findViewById(R.id.bookTitleAuthor);
 
         String booksMenuHeaderText = "Level " + String.valueOf(selectedLevel) + " Books";
         booksMenuHeader = findViewById(R.id.books_menu_header);
@@ -59,11 +66,13 @@ public class BooksMenu extends AppCompatActivity {
 
         getStories(selectedLevel);
 
-        bookSelection.setOnClickListener(new View.OnClickListener(){
+        booksListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View v){
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.d(TAG, "onSuccess: " + position);
+                Log.d(TAG, "onSuccess: storycollectionid " + storyIdCollection.get(position));
                 Intent intent = new Intent(BooksMenu.this, StoryPage.class);
-                intent.putExtra("storyId", snapshotId);
+                intent.putExtra("storyId", storyIdCollection.get(position));
                 startActivity(intent);
             }
         });
@@ -76,8 +85,6 @@ public class BooksMenu extends AppCompatActivity {
                 @Override
                 public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
 
-                    String data = "";
-
                     for (QueryDocumentSnapshot snapshots : queryDocumentSnapshots) {
 
                             Story story = snapshots.toObject(Story.class);
@@ -86,14 +93,18 @@ public class BooksMenu extends AppCompatActivity {
                                 Log.d(TAG, "onSuccess: " + snapshots.getId());
 
                                 storyIdCollection.add(snapshots.getId());
-                                Log.d(TAG, "onSuccess: StoryCollection after adding " + storyIdCollection);
-
-                                data += story.getTitle() + " \n"
-                                        + "by " + story.getAuthor() + "\n\n" ;
+                                storyArrayList.add(story.getTitle() + " \n"
+                                        + " by " + story.getAuthor());
                             }
 
                     }
-                    bookSelection.setText(data);
+                    storyArrayAdapter = new ArrayAdapter<>(
+                      BooksMenu.this,
+                      android.R.layout.simple_list_item_1,
+                      storyArrayList
+                    );
+                    Log.d(TAG, "onSuccess: storyarraylist " + storyArrayList);
+                    booksListView.setAdapter(storyArrayAdapter);
                 }
             })
             .addOnFailureListener(new OnFailureListener() {
@@ -104,8 +115,4 @@ public class BooksMenu extends AppCompatActivity {
             });
     }
 
-    private void getStoryId(){
-
-        
-    }
 }
