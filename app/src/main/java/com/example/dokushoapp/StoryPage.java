@@ -35,15 +35,11 @@ public class StoryPage extends AppCompatActivity {
 
         storyContent = findViewById(R.id.story_content);
 
-        pages = getStory(storyId);
+        getStory(storyId);
 
-        sentence = pages[0].getContent();
-
-        storyContent.setText(sentence);
-//
     }
 
-    private Page[] getStory(final String storyId) {
+    private void getStory(final String storyId) {
 
         dbStories.get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -53,20 +49,18 @@ public class StoryPage extends AppCompatActivity {
                         for (QueryDocumentSnapshot snapshots : queryDocumentSnapshots) {
 
                             Story story = snapshots.toObject(Story.class);
+                            sentence = "";
 
                             if (snapshots.getId().equals(storyId)){
                                 Log.d(TAG, "onSuccess: " + snapshots.getId());
 
                                 Page[] storyPages = story.getPages();
 
-//                                for (Page onePage : pages){
-//                                    pages += onePage.toObject(Page.class);
-//                                }
-
-                                return storyPages;
+                                sentence += storyPages[0].getContent();
                             }
 
                         }
+                        storyContent.setText(sentence);
 
                     }
                 })
