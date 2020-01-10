@@ -20,7 +20,6 @@ public class StoryPage extends AppCompatActivity {
 
     private static final String TAG = "StoryPage";
     private TextView storyContent;
-//    private Page[] pages;
     private String sentence;
 
     //Connection to Firebase
