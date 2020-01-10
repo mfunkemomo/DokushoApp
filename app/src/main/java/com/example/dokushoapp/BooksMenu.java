@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -36,9 +37,7 @@ import javax.annotation.Nullable;
 public class BooksMenu extends AppCompatActivity {
 
     private static final String TAG = "BooksMenu";
-    private TextView bookSelection;
     private TextView booksMenuHeader;
-    private String snapshotId;
     private List<String> storyIdCollection;
     private ListView booksListView;
     private ArrayList<String> storyArrayList;
@@ -60,7 +59,6 @@ public class BooksMenu extends AppCompatActivity {
         storyIdCollection = new ArrayList<>();
 
         int selectedLevel = getIntent().getIntExtra("level", 1);
-//        bookSelection = findViewById(R.id.bookTitleAuthor);
 
         String booksMenuHeaderText = "Level " + String.valueOf(selectedLevel) + " Books";
         booksMenuHeader = findViewById(R.id.books_menu_header);
@@ -68,14 +66,16 @@ public class BooksMenu extends AppCompatActivity {
 
         getStories(selectedLevel);
 
-//        bookSelection.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v){
-//                Intent intent = new Intent(BooksMenu.this, StoryPage.class);
-//                intent.putExtra("storyId", snapshotId);
-//                startActivity(intent);
-//            }
-//        });
+        booksListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.d(TAG, "onSuccess: " + position);
+                Log.d(TAG, "onSuccess: storycollectionid " + storyIdCollection.get(position));
+                Intent intent = new Intent(BooksMenu.this, StoryPage.class);
+                intent.putExtra("storyId", storyIdCollection.get(position));
+                startActivity(intent);
+            }
+        });
     }
 
     private void getStories(final int selectedLevel){
@@ -84,8 +84,6 @@ public class BooksMenu extends AppCompatActivity {
             .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                 @Override
                 public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-
-//                    String data = "";
 
                     for (QueryDocumentSnapshot snapshots : queryDocumentSnapshots) {
 
@@ -97,11 +95,6 @@ public class BooksMenu extends AppCompatActivity {
                                 storyIdCollection.add(snapshots.getId());
                                 storyArrayList.add(story.getTitle() + " \n"
                                         + " by " + story.getAuthor());
-//                                Log.d(TAG, "onSuccess: StoryCollection after adding " + storyIdCollection);
-
-
-//                                data += story.getTitle() + " \n"
-//                                        + "by " + story.getAuthor() + "\n\n" ;
                             }
 
                     }
@@ -110,7 +103,6 @@ public class BooksMenu extends AppCompatActivity {
                       android.R.layout.simple_list_item_1,
                       storyArrayList
                     );
-//                    bookSelection.setText(data);
                     Log.d(TAG, "onSuccess: storyarraylist " + storyArrayList);
                     booksListView.setAdapter(storyArrayAdapter);
                 }
@@ -123,8 +115,4 @@ public class BooksMenu extends AppCompatActivity {
             });
     }
 
-    private void getStoryId(){
-
-        
-    }
 }
