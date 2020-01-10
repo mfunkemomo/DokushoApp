@@ -25,17 +25,9 @@
         android:text="@string/select_a_book"
         android:textSize="18sp" />
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="9dp">
-
-            <TextView
-                android:id="@+id/bookTitleAuthor"
-                android:textSize="28sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        
-    </ScrollView>
+    <ListView
+        android:id="@+id/books_list_view"
+        android:layout_width="wrap_content"
+        android:layout_height="426dp" />
 
 </LinearLayout>

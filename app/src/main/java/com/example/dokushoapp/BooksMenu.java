@@ -7,7 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -38,6 +40,9 @@ public class BooksMenu extends AppCompatActivity {
     private TextView booksMenuHeader;
     private String snapshotId;
     private List<String> storyIdCollection;
+    private ListView booksListView;
+    private ArrayList<String> storyArrayList;
+    private ArrayAdapter storyArrayAdapter;
 
     //Connection to Firebase
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -48,10 +53,14 @@ public class BooksMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_books_menu);
+
+        booksListView = findViewById(R.id.books_list_view);
+        storyArrayList = new ArrayList<>();
+
         storyIdCollection = new ArrayList<>();
 
         int selectedLevel = getIntent().getIntExtra("level", 1);
-        bookSelection = findViewById(R.id.bookTitleAuthor);
+//        bookSelection = findViewById(R.id.bookTitleAuthor);
 
         String booksMenuHeaderText = "Level " + String.valueOf(selectedLevel) + " Books";
         booksMenuHeader = findViewById(R.id.books_menu_header);
@@ -59,14 +68,14 @@ public class BooksMenu extends AppCompatActivity {
 
         getStories(selectedLevel);
 
-        bookSelection.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Intent intent = new Intent(BooksMenu.this, StoryPage.class);
-                intent.putExtra("storyId", snapshotId);
-                startActivity(intent);
-            }
-        });
+//        bookSelection.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v){
+//                Intent intent = new Intent(BooksMenu.this, StoryPage.class);
+//                intent.putExtra("storyId", snapshotId);
+//                startActivity(intent);
+//            }
+//        });
     }
 
     private void getStories(final int selectedLevel){
@@ -76,7 +85,7 @@ public class BooksMenu extends AppCompatActivity {
                 @Override
                 public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
 
-                    String data = "";
+//                    String data = "";
 
                     for (QueryDocumentSnapshot snapshots : queryDocumentSnapshots) {
 
@@ -86,14 +95,24 @@ public class BooksMenu extends AppCompatActivity {
                                 Log.d(TAG, "onSuccess: " + snapshots.getId());
 
                                 storyIdCollection.add(snapshots.getId());
-                                Log.d(TAG, "onSuccess: StoryCollection after adding " + storyIdCollection);
+                                storyArrayList.add(story.getTitle() + " \n"
+                                        + " by " + story.getAuthor());
+//                                Log.d(TAG, "onSuccess: StoryCollection after adding " + storyIdCollection);
 
-                                data += story.getTitle() + " \n"
-                                        + "by " + story.getAuthor() + "\n\n" ;
+
+//                                data += story.getTitle() + " \n"
+//                                        + "by " + story.getAuthor() + "\n\n" ;
                             }
 
                     }
-                    bookSelection.setText(data);
+                    storyArrayAdapter = new ArrayAdapter<>(
+                      BooksMenu.this,
+                      android.R.layout.simple_list_item_1,
+                      storyArrayList
+                    );
+//                    bookSelection.setText(data);
+                    Log.d(TAG, "onSuccess: storyarraylist " + storyArrayList);
+                    booksListView.setAdapter(storyArrayAdapter);
                 }
             })
             .addOnFailureListener(new OnFailureListener() {
