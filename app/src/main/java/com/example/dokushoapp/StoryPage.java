@@ -46,11 +46,11 @@ public class StoryPage extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        sentence = "";
 
                         for (QueryDocumentSnapshot snapshots : queryDocumentSnapshots) {
 
                             Story story = snapshots.toObject(Story.class);
-                            sentence = "";
 
                             if (snapshots.getId().equals(storyId)){
                                 Log.d(TAG, "onSuccess: " + snapshots.getId());
@@ -63,7 +63,6 @@ public class StoryPage extends AppCompatActivity {
 
                         }
                         storyContent.setText(sentence);
-
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
