@@ -79,7 +79,7 @@ public class BooksMenu extends AppCompatActivity {
                             if (story.getLevel() == selectedLevel){
 
                                 data += story.getTitle() + " \n"
-                                        + "By " + story.getAuthor() + "\n\n" ;
+                                        + "by " + story.getAuthor() + "\n\n" ;
                             }
 
                         Log.d(TAG, "onSuccess: " + snapshots.getId());

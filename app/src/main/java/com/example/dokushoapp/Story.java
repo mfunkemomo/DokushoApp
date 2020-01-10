@@ -1,6 +1,7 @@
 package com.example.dokushoapp;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -8,7 +9,7 @@ public class Story {
     private String title;
     private String author;
     private int level;
-    private Page[] pages;
+    private ArrayList<Page> pages;
 
     //empty constructor for Firebase
     public Story(){ }
@@ -25,7 +26,7 @@ public class Story {
         return level;
     }
 
-    public Page[] getPages() {
+    public ArrayList<Page> getPages() {
         return pages;
     }
 }

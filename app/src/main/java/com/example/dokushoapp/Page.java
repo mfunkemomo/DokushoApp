@@ -1,12 +1,13 @@
 package com.example.dokushoapp;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Page {
 
     private String content;
     private String translation;
-    private String[] fakeTranslation;
+    private ArrayList<String> fakeTranslation;
 
     //empty constructor for Firebase
     public Page(){ }
@@ -19,7 +20,7 @@ public class Page {
         return translation;
     }
 
-    public String[] getFakeTranslation() {
+    public ArrayList<String> getFakeTranslation() {
         return fakeTranslation;
     }
 }
