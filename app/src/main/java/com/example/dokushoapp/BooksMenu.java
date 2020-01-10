@@ -23,7 +23,10 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import org.w3c.dom.Text;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Nullable;
@@ -33,6 +36,8 @@ public class BooksMenu extends AppCompatActivity {
     private static final String TAG = "BooksMenu";
     private TextView bookSelection;
     private TextView booksMenuHeader;
+    private String snapshotId;
+    private List<String> storyIdCollection;
 
     //Connection to Firebase
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -43,6 +48,7 @@ public class BooksMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_books_menu);
+        storyIdCollection = new ArrayList<>();
 
         int selectedLevel = getIntent().getIntExtra("level", 1);
         bookSelection = findViewById(R.id.bookTitleAuthor);
@@ -57,7 +63,7 @@ public class BooksMenu extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 Intent intent = new Intent(BooksMenu.this, StoryPage.class);
-                intent.putExtra("storyId", "WyxihCAXfic0F2nveXRC");
+                intent.putExtra("storyId", snapshotId);
                 startActivity(intent);
             }
         });
@@ -77,16 +83,17 @@ public class BooksMenu extends AppCompatActivity {
                             Story story = snapshots.toObject(Story.class);
 
                             if (story.getLevel() == selectedLevel){
+                                Log.d(TAG, "onSuccess: " + snapshots.getId());
+
+                                storyIdCollection.add(snapshots.getId());
+                                Log.d(TAG, "onSuccess: StoryCollection after adding " + storyIdCollection);
 
                                 data += story.getTitle() + " \n"
                                         + "by " + story.getAuthor() + "\n\n" ;
                             }
 
-                        Log.d(TAG, "onSuccess: " + snapshots.getId());
-
                     }
                     bookSelection.setText(data);
-
                 }
             })
             .addOnFailureListener(new OnFailureListener() {
@@ -95,5 +102,10 @@ public class BooksMenu extends AppCompatActivity {
                     Log.d(TAG, "onError: " + e.toString());
                 }
             });
+    }
+
+    private void getStoryId(){
+
+        
     }
 }
