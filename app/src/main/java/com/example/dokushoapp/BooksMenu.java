@@ -57,6 +57,7 @@ public class BooksMenu extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 Intent intent = new Intent(BooksMenu.this, StoryPage.class);
+                intent.putExtra("storyId", "WyxihCAXfic0F2nveXRC");
                 startActivity(intent);
             }
         });
@@ -78,7 +79,7 @@ public class BooksMenu extends AppCompatActivity {
                             if (story.getLevel() == selectedLevel){
 
                                 data += story.getTitle() + " \n"
-                                        + "By " + story.getAuthor() + "\n\n" ;
+                                        + "by " + story.getAuthor() + "\n\n" ;
                             }
 
                         Log.d(TAG, "onSuccess: " + snapshots.getId());
