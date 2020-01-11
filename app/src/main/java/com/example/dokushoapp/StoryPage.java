@@ -19,6 +19,7 @@ import java.util.ArrayList;
 public class StoryPage extends AppCompatActivity {
 
     private static final String TAG = "StoryPage";
+    private TextView bookTitleHeader;
     private TextView storyContent;
     private String sentence;
 
@@ -35,6 +36,7 @@ public class StoryPage extends AppCompatActivity {
         Log.d(TAG, "onSuccess, storyid: " + storyId);
 
         storyContent = findViewById(R.id.story_content);
+        bookTitleHeader = findViewById(R.id.book_title_header);
 
         getStory(storyId);
 
@@ -46,6 +48,7 @@ public class StoryPage extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        String bookTitle = "";
                         sentence = "";
 
                         for (QueryDocumentSnapshot snapshots : queryDocumentSnapshots) {
@@ -54,6 +57,7 @@ public class StoryPage extends AppCompatActivity {
 
                             if (snapshots.getId().equals(storyId)){
                                 Log.d(TAG, "onSuccess: " + snapshots.getId());
+                                bookTitle = story.getTitle();
 
                                 ArrayList<Page> storyPages = story.getPages();
 
@@ -63,6 +67,7 @@ public class StoryPage extends AppCompatActivity {
 
                         }
                         storyContent.setText(sentence);
+                        bookTitleHeader.setText("Book title: " + bookTitle);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
