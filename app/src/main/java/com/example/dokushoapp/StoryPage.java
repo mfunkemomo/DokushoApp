@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,9 +32,11 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
     private TextView storyContent;
     private String sentence;
     private ArrayList<Page> storyPages;
-    private Button fakeAnswer1Button;
-    private Button fakeAnswer2Button;
-    private Button correctAnswerButton;
+    private Button answerButton1;
+    private Button answerButton2;
+    private Button answerButton3;
+    private ImageButton nextButton;
+    private ImageButton prevButton;
     private int pageNum;
 
 
@@ -51,22 +54,20 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
 
         storyContent = findViewById(R.id.story_content);
         bookTitleHeader = findViewById(R.id.book_title_header);
-        fakeAnswer1Button = findViewById(R.id.fake_answer_button_1);
-        fakeAnswer2Button = findViewById(R.id.fake_answer_button_2);
-        correctAnswerButton = findViewById(R.id.correct_answer_button);
+        answerButton1 = findViewById(R.id.answer_button_1);
+        answerButton2 = findViewById(R.id.answer_button_2);
+        answerButton3 = findViewById(R.id.answer_button_3);
+        nextButton = findViewById(R.id.next_button);
+        prevButton = findViewById(R.id.prev_button);
 
         getStory(storyId, pageNum);
 //        Log.d(TAG, "onSuccess: storypages outside method " + storyPages);
 
-        //onClick
-        // check answer method
-        fakeAnswer1Button.setOnClickListener(StoryPage.this);
-        fakeAnswer2Button.setOnClickListener(StoryPage.this);
-        correctAnswerButton.setOnClickListener(StoryPage.this);
-
-
-        //onClick next button, increase pageNum and run getStory with updated pageNum
-        //onClick prev button, decrease pageNum and run getStory with updated pageNum
+        answerButton1.setOnClickListener(StoryPage.this);
+        answerButton2.setOnClickListener(StoryPage.this);
+        answerButton3.setOnClickListener(StoryPage.this);
+        nextButton.setOnClickListener(StoryPage.this);
+        prevButton.setOnClickListener(StoryPage.this);
 
     }
 
@@ -103,9 +104,9 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
 
                         Collections.shuffle(answersList);
 
-                        correctAnswerButton.setText(answersList.get(0));
-                        fakeAnswer1Button.setText(answersList.get(1));
-                        fakeAnswer2Button.setText(answersList.get(2));
+                        answerButton3.setText(answersList.get(0));
+                        answerButton2.setText(answersList.get(1));
+                        answerButton1.setText(answersList.get(2));
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -119,30 +120,29 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.correct_answer_button:
-                //toast MARU
-                Toast.makeText(StoryPage.this,"MARU ^_^", Toast.LENGTH_SHORT)
+            case R.id.answer_button_3:
+                Toast.makeText(StoryPage.this,"まる ^_^", Toast.LENGTH_SHORT)
                         .show();
-                Log.d(TAG, "MARU ");
                 break;
 
-            case R.id.fake_answer_button_1:
-                //toast BATSU
-                Toast.makeText(StoryPage.this,"BATSU T_T", Toast.LENGTH_SHORT)
+            case R.id.answer_button_2:
+                Toast.makeText(StoryPage.this,"ばつ T_T", Toast.LENGTH_SHORT)
                         .show();
-                Log.d(TAG, "BATSU ");
                 break;
 
-            case R.id.fake_answer_button_2:
-                //toast BATSU
-                Toast.makeText(StoryPage.this,"BATSU T_T", Toast.LENGTH_SHORT)
+            case R.id.answer_button_1:
+                Toast.makeText(StoryPage.this,"ばつ T_T", Toast.LENGTH_SHORT)
                         .show();
-                Log.d(TAG, "BATSU ");
                 break;
 
             case R.id.next_button:
-                pageNum = (pageNum + 1) % storyPages.size();
-                getStory(storyId, pageNum);
+                if (pageNum < storyPages.size()){
+                    pageNum = (pageNum + 1) % storyPages.size();
+                    getStory(storyId, pageNum);
+                } else {
+                    Toast.makeText(StoryPage.this,"終わり", Toast.LENGTH_SHORT)
+                            .show();
+                }
                 break;
             case R.id.prev_button:
                 if (pageNum > 0) {
@@ -150,6 +150,10 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
                     getStory(storyId, pageNum);
                 }
         }
+
+    }
+
+    private void checkAnswer(){
 
     }
 
