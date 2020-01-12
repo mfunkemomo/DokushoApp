@@ -3,10 +3,14 @@ package com.example.dokushoapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -17,10 +21,12 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
 
-public class StoryPage extends AppCompatActivity {
+public class StoryPage extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = "StoryPage";
+    private String storyId;
     private TextView bookTitleHeader;
     private TextView storyContent;
     private String sentence;
@@ -28,6 +34,8 @@ public class StoryPage extends AppCompatActivity {
     private Button fakeAnswer1Button;
     private Button fakeAnswer2Button;
     private Button correctAnswerButton;
+    private int pageNum;
+
 
     //Connection to Firebase
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -38,7 +46,8 @@ public class StoryPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_story_page);
 
-        String storyId = getIntent().getStringExtra("storyId");
+        storyId = getIntent().getStringExtra("storyId");
+        pageNum = 0;
 
         storyContent = findViewById(R.id.story_content);
         bookTitleHeader = findViewById(R.id.book_title_header);
@@ -46,13 +55,22 @@ public class StoryPage extends AppCompatActivity {
         fakeAnswer2Button = findViewById(R.id.fake_answer_button_2);
         correctAnswerButton = findViewById(R.id.correct_answer_button);
 
-        getStory(storyId);
-        Log.d(TAG, "onSuccess: storypages outside method " + storyPages);
+        getStory(storyId, pageNum);
+//        Log.d(TAG, "onSuccess: storypages outside method " + storyPages);
 
+        //onClick
+        // check answer method
+        fakeAnswer1Button.setOnClickListener(StoryPage.this);
+        fakeAnswer2Button.setOnClickListener(StoryPage.this);
+        correctAnswerButton.setOnClickListener(StoryPage.this);
+
+
+        //onClick next button, increase pageNum and run getStory with updated pageNum
+        //onClick prev button, decrease pageNum and run getStory with updated pageNum
 
     }
 
-    private void getStory(final String storyId) {
+    private void getStory(final String storyId, final int pageNum) {
 
         dbStories.get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -60,9 +78,7 @@ public class StoryPage extends AppCompatActivity {
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         String bookTitle = "";
                         sentence = "";
-                        String translation = "";
-                        String fakeTranslation1 = "";
-                        String fakeTranslation2 = "";
+                        ArrayList<String> answersList = new ArrayList<>();
 
                         for (QueryDocumentSnapshot snapshots : queryDocumentSnapshots) {
 
@@ -74,28 +90,22 @@ public class StoryPage extends AppCompatActivity {
 
                                 storyPages = story.getPages();
 
-                                //display first page of storyPages
-                                //page = 0
-                                //if user clicks next, page += 1 and redisplay page
+                                sentence += storyPages.get(pageNum).getContent();
 
-                                sentence += storyPages.get(0).getContent();
-
-                                translation += storyPages.get(0).getTranslation();
-
-                                fakeTranslation1 += storyPages.get(0).getFakeTranslation().get(0);
-
-                                fakeTranslation2 += storyPages.get(0).getFakeTranslation().get(1);
+                                answersList.add(storyPages.get(pageNum).getTranslation());
+                                answersList.add(storyPages.get(pageNum).getFakeTranslation().get(0));
+                                answersList.add(storyPages.get(pageNum).getFakeTranslation().get(1));
                             }
 
                         }
                         storyContent.setText(sentence);
                         bookTitleHeader.setText("Book title: " + bookTitle);
-                        correctAnswerButton.setText(translation);
-                        fakeAnswer1Button.setText(fakeTranslation1);
-                        fakeAnswer2Button.setText(fakeTranslation2);
 
-                        Log.d(TAG, "onSuccess: " + sentence);
-                        Log.d(TAG, "onSuccess: storypages after adding" + storyPages);
+                        Collections.shuffle(answersList);
+
+                        correctAnswerButton.setText(answersList.get(0));
+                        fakeAnswer1Button.setText(answersList.get(1));
+                        fakeAnswer2Button.setText(answersList.get(2));
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -104,6 +114,43 @@ public class StoryPage extends AppCompatActivity {
                         Log.d(TAG, "onError: " + e.toString());
                     }
                 });
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.correct_answer_button:
+                //toast MARU
+                Toast.makeText(StoryPage.this,"MARU ^_^", Toast.LENGTH_SHORT)
+                        .show();
+                Log.d(TAG, "MARU ");
+                break;
+
+            case R.id.fake_answer_button_1:
+                //toast BATSU
+                Toast.makeText(StoryPage.this,"BATSU T_T", Toast.LENGTH_SHORT)
+                        .show();
+                Log.d(TAG, "BATSU ");
+                break;
+
+            case R.id.fake_answer_button_2:
+                //toast BATSU
+                Toast.makeText(StoryPage.this,"BATSU T_T", Toast.LENGTH_SHORT)
+                        .show();
+                Log.d(TAG, "BATSU ");
+                break;
+
+            case R.id.next_button:
+                pageNum = (pageNum + 1) % storyPages.size();
+                getStory(storyId, pageNum);
+                break;
+            case R.id.prev_button:
+                if (pageNum > 0) {
+                    pageNum = (pageNum - 1) % storyPages.size();
+                    getStory(storyId, pageNum);
+                }
+        }
+
     }
 
 
