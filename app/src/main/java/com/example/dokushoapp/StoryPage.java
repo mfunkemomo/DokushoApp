@@ -40,8 +40,6 @@ public class StoryPage extends AppCompatActivity {
 
         String storyId = getIntent().getStringExtra("storyId");
 
-        storyPages = new ArrayList<>();
-
         storyContent = findViewById(R.id.story_content);
         bookTitleHeader = findViewById(R.id.book_title_header);
         fakeAnswer1Button = findViewById(R.id.fake_answer_button_1);
@@ -49,6 +47,7 @@ public class StoryPage extends AppCompatActivity {
         correctAnswerButton = findViewById(R.id.correct_answer_button);
 
         getStory(storyId);
+        Log.d(TAG, "onSuccess: storypages outside method " + storyPages);
 
 
     }
@@ -74,6 +73,10 @@ public class StoryPage extends AppCompatActivity {
                                 bookTitle = story.getTitle();
 
                                 storyPages = story.getPages();
+
+                                //display first page of storyPages
+                                //page = 0
+                                //if user clicks next, page += 1 and redisplay page
 
                                 sentence += storyPages.get(0).getContent();
 
