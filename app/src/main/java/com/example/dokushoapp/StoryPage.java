@@ -99,7 +99,7 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
 
                         }
                         storyContent.setText(sentence);
-                        bookTitleHeader.setText("Book title: " + bookTitle);
+                        bookTitleHeader.setText("書名：" + bookTitle);
 
                         Collections.shuffle(answersList);
 
@@ -161,10 +161,10 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
         Log.d(TAG, "correctTranslation: " + correctTranslation);
         Log.d(TAG, "userChoice: " + userChoice);
         if (userChoice == correctTranslation){
-            Toast.makeText(StoryPage.this,"まる ^_^", Toast.LENGTH_SHORT)
+            Toast.makeText(StoryPage.this,"まる ✅", Toast.LENGTH_SHORT)
                     .show();
         } else {
-            Toast.makeText(StoryPage.this,"ばつ T_T", Toast.LENGTH_SHORT)
+            Toast.makeText(StoryPage.this,"ばつ ❌", Toast.LENGTH_SHORT)
                     .show();
         }
     }
