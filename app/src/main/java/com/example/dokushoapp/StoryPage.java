@@ -61,7 +61,6 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
         prevButton = findViewById(R.id.prev_button);
 
         getStory(storyId, pageNum);
-//        Log.d(TAG, "onSuccess: storypages outside method " + storyPages);
 
         answerButton1.setOnClickListener(StoryPage.this);
         answerButton2.setOnClickListener(StoryPage.this);
@@ -119,20 +118,24 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
+        String userChoice = "";
         switch (v.getId()) {
-            case R.id.answer_button_3:
-                Toast.makeText(StoryPage.this,"まる ^_^", Toast.LENGTH_SHORT)
-                        .show();
+            case R.id.answer_button_1:
+                userChoice = answerButton1.getText().toString();
+                Log.d(TAG, "userChoice: " + userChoice);
+                checkAnswer(userChoice);
                 break;
 
             case R.id.answer_button_2:
-                Toast.makeText(StoryPage.this,"ばつ T_T", Toast.LENGTH_SHORT)
-                        .show();
+                userChoice = answerButton2.getText().toString();
+                Log.d(TAG, "userChoice: " + userChoice);
+                checkAnswer(userChoice);
                 break;
 
-            case R.id.answer_button_1:
-                Toast.makeText(StoryPage.this,"ばつ T_T", Toast.LENGTH_SHORT)
-                        .show();
+            case R.id.answer_button_3:
+                userChoice = answerButton3.getText().toString();
+                Log.d(TAG, "userChoice: " + userChoice);
+                checkAnswer(userChoice);
                 break;
 
             case R.id.next_button:
@@ -153,8 +156,17 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
 
     }
 
-    private void checkAnswer(){
-
+    private void checkAnswer(String userChoice){
+        String correctTranslation = storyPages.get(pageNum).getTranslation();
+        Log.d(TAG, "correctTranslation: " + correctTranslation);
+        Log.d(TAG, "userChoice: " + userChoice);
+        if (userChoice == correctTranslation){
+            Toast.makeText(StoryPage.this,"まる ^_^", Toast.LENGTH_SHORT)
+                    .show();
+        } else {
+            Toast.makeText(StoryPage.this,"ばつ T_T", Toast.LENGTH_SHORT)
+                    .show();
+        }
     }
 
 
