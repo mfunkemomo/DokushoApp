@@ -158,13 +158,11 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
 
     private void checkAnswer(String userChoice){
         String correctTranslation = storyPages.get(pageNum).getTranslation();
-        Log.d(TAG, "correctTranslation: " + correctTranslation);
-        Log.d(TAG, "userChoice: " + userChoice);
         if (userChoice == correctTranslation){
-            Toast.makeText(StoryPage.this,"まる ✅", Toast.LENGTH_SHORT)
+            Toast.makeText(StoryPage.this,"✅ まる ", Toast.LENGTH_SHORT)
                     .show();
         } else {
-            Toast.makeText(StoryPage.this,"ばつ ❌", Toast.LENGTH_SHORT)
+            Toast.makeText(StoryPage.this,"❌ ばつ", Toast.LENGTH_SHORT)
                     .show();
         }
     }

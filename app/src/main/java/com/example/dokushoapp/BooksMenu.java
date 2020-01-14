@@ -91,7 +91,7 @@ public class BooksMenu extends AppCompatActivity {
 
                                 storyIdCollection.add(snapshots.getId());
                                 storyArrayList.add(story.getAuthor()
-                                        + " の 「" + story.getTitle() + "」");
+                                        + " の「" + story.getTitle() + "」");
                             }
 
                     }
