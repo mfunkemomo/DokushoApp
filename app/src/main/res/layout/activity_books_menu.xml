@@ -17,6 +17,7 @@
         android:layout_marginTop="90dp"
         android:text="@string/level_books_header"
         android:textColor="@color/colorAbsoluteBlack"
+        android:textStyle="bold"
         android:textSize="30sp" />
 
     <TextView
@@ -32,6 +33,7 @@
         android:id="@+id/books_list_view"
         android:layout_width="wrap_content"
         android:textColor="@color/colorAbsoluteBlack"
+
         android:layout_height="426dp"
         android:paddingTop="30dp" />
 
