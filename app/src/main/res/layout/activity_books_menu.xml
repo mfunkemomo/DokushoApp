@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:padding="24dp"
+    android:background="@color/colorLightSeaGreen"
     android:layout_height="match_parent"
     tools:context=".BooksMenu">
 
@@ -15,6 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="90dp"
         android:text="@string/level_books_header"
+        android:textColor="@color/colorAbsoluteBlack"
         android:textSize="30sp" />
 
     <TextView
@@ -23,11 +25,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="@string/select_a_book"
+        android:textColor="@color/colorTintedGrey"
         android:textSize="18sp" />
 
     <ListView
         android:id="@+id/books_list_view"
         android:layout_width="wrap_content"
+        android:textColor="@color/colorAbsoluteBlack"
         android:layout_height="426dp"
         android:paddingTop="30dp" />
 
