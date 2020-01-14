@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DokushoApp</string>
+    <string name="app_name">Dokusho App</string>
     <string name="welcome_to_dokusho">読書へよこそ\n Welcome to Dokusho</string>
     <string name="select_level">Let\'s begin reading. Select your reading level.</string>
     <string name="level_1">Level 1</string>
@@ -12,4 +12,6 @@
     <string name="button_1">Answer 1</string>
     <string name="button_2">Answer 2</string>
     <string name="button_3">Answer 3</string>
+    <string name="next_page">次 👉</string>
+    <string name="previous_page">👈️️ 前</string>
 </resources>

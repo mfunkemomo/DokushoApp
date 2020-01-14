@@ -35,8 +35,8 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
     private Button answerButton1;
     private Button answerButton2;
     private Button answerButton3;
-    private ImageButton nextButton;
-    private ImageButton prevButton;
+    private Button nextButton;
+    private Button prevButton;
     private int pageNum;
 
 
