@@ -90,8 +90,8 @@ public class BooksMenu extends AppCompatActivity {
                             if (story.getLevel() == selectedLevel){
 
                                 storyIdCollection.add(snapshots.getId());
-                                storyArrayList.add(story.getTitle() + " \n"
-                                        + " by " + story.getAuthor());
+                                storyArrayList.add(story.getAuthor()
+                                        + " の「" + story.getTitle() + "」");
                             }
 
                     }

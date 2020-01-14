@@ -1,16 +1,17 @@
 <resources>
-    <string name="app_name">DokushoApp</string>
-    <string name="welcome_to_dokusho">Welcome to Dokusho!</string>
+    <string name="app_name">Dokusho App</string>
+    <string name="welcome_to_dokusho">読書へよこそ\n Welcome to Dokusho</string>
     <string name="select_level">Let\'s begin reading. Select your reading level.</string>
     <string name="level_1">Level 1</string>
     <string name="level_2">Level 2</string>
-    <string name="level_books_header">Level 1 Books</string>
+    <string name="level_books_header">Books level header</string>
     <string name="select_a_book">Select a book.</string>
     <string name="book_1">Book 1</string>
-    <string name="book_title">Book Title</string>
-    <string name="story_content">Filler Story Content</string>
-    <string name="fake_answer_1">Fake answer 1</string>
-    <string name="book_title_and_author">Book title and author here</string>
-    <string name="fake_answer_2">Fake Answer 2</string>
-    <string name="correct_answer">Correct Answer</string>
+    <string name="book_title">Book title</string>
+    <string name="story_content">Story content here</string>
+    <string name="button_1">Answer 1</string>
+    <string name="button_2">Answer 2</string>
+    <string name="button_3">Answer 3</string>
+    <string name="next_page">次 👉</string>
+    <string name="previous_page">👈️️ 前</string>
 </resources>
