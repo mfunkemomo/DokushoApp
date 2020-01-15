@@ -44,7 +44,6 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
     //Connection to Firebase
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference dbStories = db.collection("Stories");
-    private Page Serializable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -142,8 +141,13 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
 
             case R.id.next_button:
                 if (pageNum+1 == storyPages.size()){
+
+                    ArrayList<String> lastPageContent = new ArrayList<String>();
+                    lastPageContent.add(storyPages.get(pageNum).getContent());
+                    lastPageContent.add(storyPages.get(pageNum).getTranslation());
+
                     Intent intent = new Intent(StoryPage.this, LastPage.class);
-                    intent.putExtra(Serializable,storyPages.get(storyPages.size()));
+                    intent.putExtra("lastPage", lastPageContent);
                     startActivity(intent);
                 } else {
                     pageNum = (pageNum + 1) % storyPages.size();
