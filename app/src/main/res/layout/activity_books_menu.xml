@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:padding="24dp"
-    android:background="@color/colorLightSeaGreen"
+    android:background="@color/colorLightMint"
     android:layout_height="match_parent"
     tools:context=".BooksMenu">
 

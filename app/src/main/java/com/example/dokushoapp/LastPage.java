@@ -30,7 +30,7 @@ public class LastPage extends AppCompatActivity {
         returnBooksMenu.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(LastPage.this, BooksMenu.class);
+                Intent intent = new Intent(LastPage.this, MainActivity.class);
                 startActivity(intent);
             }
         });
