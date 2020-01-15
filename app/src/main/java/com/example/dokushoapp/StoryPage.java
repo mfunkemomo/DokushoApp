@@ -20,6 +20,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -43,6 +44,7 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
     //Connection to Firebase
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference dbStories = db.collection("Stories");
+    private Page Serializable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,12 +141,13 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
                 break;
 
             case R.id.next_button:
-                if (pageNum < storyPages.size()){
+                if (pageNum+1 == storyPages.size()){
+                    Intent intent = new Intent(StoryPage.this, LastPage.class);
+                    intent.putExtra(Serializable,storyPages.get(storyPages.size()));
+                    startActivity(intent);
+                } else {
                     pageNum = (pageNum + 1) % storyPages.size();
                     getStory(storyId, pageNum);
-                } else {
-                    Toast.makeText(StoryPage.this,"終わり", Toast.LENGTH_SHORT)
-                            .show();
                 }
                 break;
             case R.id.prev_button:

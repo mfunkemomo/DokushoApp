@@ -14,4 +14,7 @@
     <string name="button_3">Answer 3</string>
     <string name="next_page">次 👉</string>
     <string name="previous_page">👈️️ 前</string>
+    <string name="owari">owari</string>
+    <string name="the_end">the end</string>
+    <string name="return_to_books_menu">return to books menu</string>
 </resources>
