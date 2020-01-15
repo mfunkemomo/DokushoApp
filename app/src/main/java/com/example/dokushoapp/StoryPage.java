@@ -149,7 +149,7 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
                 }
                  break;
             case R.id.prev_button:
-                if (pageNum > 1) {
+                if (pageNum > 0) {
                     pageNum = (pageNum - 1) % storyPages.size();
                     getStory(storyId, pageNum);
                 }
