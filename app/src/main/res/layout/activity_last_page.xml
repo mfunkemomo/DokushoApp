@@ -4,25 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorLightSeaGreen"
     tools:context=".LastPage">
 
     <TextView
         android:id="@+id/owari"
-        android:layout_width="202dp"
-        android:layout_height="64dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="168dp"
         android:text="@string/owari"
+        android:textSize="50dp"
+        android:textColor="@color/colorTintedGrey"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/the_end"
-        android:layout_width="117dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="48dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="@string/the_end"
+        android:textColor="@color/colorTintedGrey"
+        android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/owari" />
@@ -33,8 +37,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
         android:text="@string/return_to_books_menu"
+        android:background="@color/colorDarkTurq"
+        android:textColor="@android:color/white"
+        android:paddingRight="15dp"
+        android:paddingLeft="15dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/the_end" />
 </androidx.constraintlayout.widget.ConstraintLayout>

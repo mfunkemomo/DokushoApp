@@ -51,7 +51,7 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
         setContentView(R.layout.activity_story_page);
 
         storyId = getIntent().getStringExtra("storyId");
-        pageNum = 0;
+        pageNum = 2;
 
         storyContent = findViewById(R.id.story_content);
         bookTitleHeader = findViewById(R.id.book_title_header);
@@ -123,39 +123,36 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
         switch (v.getId()) {
             case R.id.answer_button_1:
                 userChoice = answerButton1.getText().toString();
-                Log.d(TAG, "userChoice: " + userChoice);
                 checkAnswer(userChoice);
                 break;
 
             case R.id.answer_button_2:
                 userChoice = answerButton2.getText().toString();
-                Log.d(TAG, "userChoice: " + userChoice);
                 checkAnswer(userChoice);
                 break;
 
             case R.id.answer_button_3:
                 userChoice = answerButton3.getText().toString();
-                Log.d(TAG, "userChoice: " + userChoice);
                 checkAnswer(userChoice);
                 break;
 
             case R.id.next_button:
-                if (pageNum+1 == storyPages.size()){
+                Log.d(TAG, "PageNUM" + pageNum);
+                Log.d(TAG, "PageTOTAL" + storyPages.size());
 
-                    ArrayList<String> lastPageContent = new ArrayList<String>();
-                    lastPageContent.add(storyPages.get(pageNum).getContent());
-                    lastPageContent.add(storyPages.get(pageNum).getTranslation());
-
-                    Intent intent = new Intent(StoryPage.this, LastPage.class);
-                    intent.putExtra("lastPage", lastPageContent);
-                    startActivity(intent);
-                } else {
+                if (pageNum < storyPages.size()){
                     pageNum = (pageNum + 1) % storyPages.size();
                     getStory(storyId, pageNum);
+                    break;
+
+                } else {
+                    Toast.makeText(StoryPage.this,"終わり", Toast.LENGTH_SHORT)
+                            .show();
+                    break;  
                 }
-                break;
+
             case R.id.prev_button:
-                if (pageNum > 0) {
+                if (pageNum > 1) {
                     pageNum = (pageNum - 1) % storyPages.size();
                     getStory(storyId, pageNum);
                 }
@@ -173,6 +170,11 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
                     .show();
         }
     }
+
+//    private void goToLastPage(){
+//        Intent intent = new Intent(StoryPage.this, LastPage.class);
+//        startActivity(intent);
+//    }
 
 
 }
