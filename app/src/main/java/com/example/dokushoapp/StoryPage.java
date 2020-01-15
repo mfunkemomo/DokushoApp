@@ -20,6 +20,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -122,33 +123,33 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
         switch (v.getId()) {
             case R.id.answer_button_1:
                 userChoice = answerButton1.getText().toString();
-                Log.d(TAG, "userChoice: " + userChoice);
                 checkAnswer(userChoice);
                 break;
 
             case R.id.answer_button_2:
                 userChoice = answerButton2.getText().toString();
-                Log.d(TAG, "userChoice: " + userChoice);
                 checkAnswer(userChoice);
                 break;
 
             case R.id.answer_button_3:
                 userChoice = answerButton3.getText().toString();
-                Log.d(TAG, "userChoice: " + userChoice);
                 checkAnswer(userChoice);
                 break;
 
             case R.id.next_button:
-                if (pageNum < storyPages.size()){
+                Log.d(TAG, "PageNUM" + pageNum);
+                Log.d(TAG, "PageTOTAL" + storyPages.size());
+
+                if (pageNum+1 < storyPages.size()){
                     pageNum = (pageNum + 1) % storyPages.size();
                     getStory(storyId, pageNum);
+
                 } else {
-                    Toast.makeText(StoryPage.this,"終わり", Toast.LENGTH_SHORT)
-                            .show();
+                    goToLastPage();
                 }
-                break;
+                 break;
             case R.id.prev_button:
-                if (pageNum > 0) {
+                if (pageNum > 1) {
                     pageNum = (pageNum - 1) % storyPages.size();
                     getStory(storyId, pageNum);
                 }
@@ -165,6 +166,11 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
             Toast.makeText(StoryPage.this,"❌ ばつ", Toast.LENGTH_SHORT)
                     .show();
         }
+    }
+
+    private void goToLastPage(){
+        Intent intent = new Intent(StoryPage.this, LastPage.class);
+        startActivity(intent);
     }
 
 
