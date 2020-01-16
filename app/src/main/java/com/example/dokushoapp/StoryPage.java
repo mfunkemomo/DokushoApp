@@ -4,7 +4,15 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.StyleSpan;
+import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -79,7 +87,10 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         String bookTitle = "";
                         sentence = "";
+                        String vocab = "";
                         ArrayList<String> answersList = new ArrayList<>();
+                        Integer spanIndexStart = null;
+                        Integer spanIndexEnd = null;
 
                         for (QueryDocumentSnapshot snapshots : queryDocumentSnapshots) {
 
@@ -88,10 +99,11 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
                             if (snapshots.getId().equals(storyId)){
 
                                 bookTitle = story.getTitle();
-
                                 storyPages = story.getPages();
-
                                 sentence += storyPages.get(pageNum).getContent();
+                                vocab = storyPages.get(pageNum).getVocab();
+                                spanIndexStart = storyPages.get(pageNum).getSpanIndex().get(0);
+                                spanIndexEnd = storyPages.get(pageNum).getSpanIndex().get(1);
 
                                 answersList.add(storyPages.get(pageNum).getTranslation());
                                 answersList.add(storyPages.get(pageNum).getFakeTranslation().get(0));
@@ -99,7 +111,26 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
                             }
 
                         }
-                        storyContent.setText(sentence);
+
+
+                        SpannableString spanSentence = new SpannableString(sentence);
+                        final String finalVocab = vocab;
+
+                        UnderlineSpan underlineSpan = new UnderlineSpan();
+                        ForegroundColorSpan fcsBlack = new ForegroundColorSpan(Color.BLACK);
+
+                        ClickableSpan clickableSpanTest = new ClickableSpan() {
+                            @Override
+                            public void onClick(@NonNull View widget) {
+                                Toast.makeText(StoryPage.this, finalVocab, Toast.LENGTH_SHORT).show();
+                            }
+                        };
+
+                        spanSentence.setSpan(clickableSpanTest, spanIndexStart, spanIndexEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                        spanSentence.setSpan(underlineSpan, spanIndexStart, spanIndexEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                        spanSentence.setSpan(fcsBlack, spanIndexStart, spanIndexEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                        storyContent.setText(spanSentence);
+                        storyContent.setMovementMethod(LinkMovementMethod.getInstance());
                         bookTitleHeader.setText("書名：" + bookTitle);
 
                         Collections.shuffle(answersList);
@@ -137,9 +168,6 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
                 break;
 
             case R.id.next_button:
-                Log.d(TAG, "PageNUM" + pageNum);
-                Log.d(TAG, "PageTOTAL" + storyPages.size());
-
                 if (pageNum+1 < storyPages.size()){
                     pageNum = (pageNum + 1) % storyPages.size();
                     getStory(storyId, pageNum);
@@ -156,6 +184,7 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
         }
 
     }
+
 
     private void checkAnswer(String userChoice){
         String correctTranslation = storyPages.get(pageNum).getTranslation();
