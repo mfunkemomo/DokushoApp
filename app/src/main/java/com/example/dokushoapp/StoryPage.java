@@ -14,6 +14,7 @@ import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.text.style.UnderlineSpan;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -122,7 +123,8 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
                         ClickableSpan clickableSpanTest = new ClickableSpan() {
                             @Override
                             public void onClick(@NonNull View widget) {
-                                Toast.makeText(StoryPage.this, finalVocab, Toast.LENGTH_SHORT).show();
+                                Toast toast = Toast.makeText(StoryPage.this, finalVocab, Toast.LENGTH_SHORT);
+                                toastView(toast);
                             }
                         };
 
@@ -180,6 +182,8 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
                 if (pageNum > 0) {
                     pageNum = (pageNum - 1) % storyPages.size();
                     getStory(storyId, pageNum);
+                } else {
+                    Toast.makeText(StoryPage.this, "Not possible", Toast.LENGTH_SHORT).show();
                 }
         }
 
@@ -189,17 +193,26 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
     private void checkAnswer(String userChoice){
         String correctTranslation = storyPages.get(pageNum).getTranslation();
         if (userChoice == correctTranslation){
-            Toast.makeText(StoryPage.this,"✅ まる ", Toast.LENGTH_SHORT)
-                    .show();
+            Toast toastMaru = Toast.makeText(StoryPage.this,"✅ まる ", Toast.LENGTH_SHORT);
+            toastView(toastMaru);
         } else {
-            Toast.makeText(StoryPage.this,"❌ ばつ", Toast.LENGTH_SHORT)
-                    .show();
+            Toast toastBatsu = Toast.makeText(StoryPage.this,"❌ ばつ", Toast.LENGTH_SHORT);
+            toastView(toastBatsu);
         }
     }
 
     private void goToLastPage(){
         Intent intent = new Intent(StoryPage.this, LastPage.class);
         startActivity(intent);
+    }
+
+    private void toastView(Toast toast){
+        View toastView = toast.getView();
+
+        TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+        toastMessage.setTextSize(25);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.show();
     }
 
 
