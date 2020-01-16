@@ -180,6 +180,8 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
                 if (pageNum > 0) {
                     pageNum = (pageNum - 1) % storyPages.size();
                     getStory(storyId, pageNum);
+                } else {
+                    Toast.makeText(StoryPage.this, "Not possible", Toast.LENGTH_SHORT).show();
                 }
         }
 
