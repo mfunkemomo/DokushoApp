@@ -4,11 +4,15 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.StyleSpan;
+import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -112,6 +116,9 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
                         SpannableString spanSentence = new SpannableString(sentence);
                         final String finalVocab = vocab;
 
+                        UnderlineSpan underlineSpan = new UnderlineSpan();
+                        ForegroundColorSpan fcsBlack = new ForegroundColorSpan(Color.BLACK);
+
                         ClickableSpan clickableSpanTest = new ClickableSpan() {
                             @Override
                             public void onClick(@NonNull View widget) {
@@ -120,6 +127,8 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
                         };
 
                         spanSentence.setSpan(clickableSpanTest, spanIndexStart, spanIndexEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                        spanSentence.setSpan(underlineSpan, spanIndexStart, spanIndexEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                        spanSentence.setSpan(fcsBlack, spanIndexStart, spanIndexEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                         storyContent.setText(spanSentence);
                         storyContent.setMovementMethod(LinkMovementMethod.getInstance());
                         bookTitleHeader.setText("書名：" + bookTitle);
