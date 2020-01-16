@@ -14,6 +14,7 @@ import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.text.style.UnderlineSpan;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -122,7 +123,13 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
                         ClickableSpan clickableSpanTest = new ClickableSpan() {
                             @Override
                             public void onClick(@NonNull View widget) {
-                                Toast.makeText(StoryPage.this, finalVocab, Toast.LENGTH_SHORT).show();
+                                Toast toast = Toast.makeText(StoryPage.this, finalVocab, Toast.LENGTH_SHORT);
+                                View toastView = toast.getView();
+
+                                TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                                toastMessage.setTextSize(25);
+                                toast.setGravity(Gravity.CENTER, 0, 0);
+                                toast.show();
                             }
                         };
 
