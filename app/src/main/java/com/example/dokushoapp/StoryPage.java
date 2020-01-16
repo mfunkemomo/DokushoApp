@@ -124,12 +124,7 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
                             @Override
                             public void onClick(@NonNull View widget) {
                                 Toast toast = Toast.makeText(StoryPage.this, finalVocab, Toast.LENGTH_SHORT);
-                                View toastView = toast.getView();
-
-                                TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
-                                toastMessage.setTextSize(25);
-                                toast.setGravity(Gravity.CENTER, 0, 0);
-                                toast.show();
+                                toastView(toast);
                             }
                         };
 
@@ -198,17 +193,26 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
     private void checkAnswer(String userChoice){
         String correctTranslation = storyPages.get(pageNum).getTranslation();
         if (userChoice == correctTranslation){
-            Toast.makeText(StoryPage.this,"✅ まる ", Toast.LENGTH_SHORT)
-                    .show();
+            Toast toastMaru = Toast.makeText(StoryPage.this,"✅ まる ", Toast.LENGTH_SHORT);
+            toastView(toastMaru);
         } else {
-            Toast.makeText(StoryPage.this,"❌ ばつ", Toast.LENGTH_SHORT)
-                    .show();
+            Toast toastBatsu = Toast.makeText(StoryPage.this,"❌ ばつ", Toast.LENGTH_SHORT);
+            toastView(toastBatsu);
         }
     }
 
     private void goToLastPage(){
         Intent intent = new Intent(StoryPage.this, LastPage.class);
         startActivity(intent);
+    }
+
+    private void toastView(Toast toast){
+        View toastView = toast.getView();
+
+        TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+        toastMessage.setTextSize(25);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.show();
     }
 
 
