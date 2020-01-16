@@ -1,9 +1,6 @@
 package com.example.dokushoapp;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Objects;
 
 public class Story {
     private String title;
@@ -29,4 +26,5 @@ public class Story {
     public ArrayList<Page> getPages() {
         return pages;
     }
+
 }
