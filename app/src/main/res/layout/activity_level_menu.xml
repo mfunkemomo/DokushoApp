@@ -37,7 +37,7 @@
         android:layout_marginTop="72dp"
         android:text="@string/level_1"
         android:textColor="@android:color/white"
-        android:background="@color/colorBlackGreen"/>
+        android:background="@drawable/rounded_button"/>
 
     <Button
         android:id="@+id/lvl2_button"
@@ -46,6 +46,6 @@
         android:layout_marginTop="20dp"
         android:text="@string/level_2"
         android:textColor="@android:color/white"
-        android:background="@color/colorBlackGreen" />
+        android:background="@drawable/rounded_button" />
 
 </LinearLayout>
