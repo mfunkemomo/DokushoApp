@@ -22,4 +22,5 @@
     <string name="let_s_read">読んで始め!\nLet\'s read!</string>
     <string name="reading_icon">Reading icon</string>
     <string name="app_explanation">Continuing foreign language skills through reading (starting in Japanese).</string>
+    <string name="image_button">Image button for text to speech</string>
 </resources>

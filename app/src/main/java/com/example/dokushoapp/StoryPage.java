@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
@@ -16,6 +17,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +30,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Locale;
 
 public class StoryPage extends AppCompatActivity implements View.OnClickListener {
 
@@ -43,6 +46,8 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
     private Button nextButton;
     private Button prevButton;
     private int pageNum;
+    private TextToSpeech mTTS;
+    private ImageButton mButtonSpeak;
 
 
     //Connection to Firebase
@@ -65,6 +70,25 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
         answerButton3 = findViewById(R.id.answer_button_3);
         nextButton = findViewById(R.id.next_button);
         prevButton = findViewById(R.id.prev_button);
+        mButtonSpeak = findViewById(R.id.speak_button);
+
+        mTTS = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status == TextToSpeech.SUCCESS) {
+                    int result = mTTS.setLanguage(Locale.JAPANESE);
+
+                    if (result == TextToSpeech.LANG_MISSING_DATA
+                            || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                        Log.e("TTS", "Language not supported");
+                    } else {
+                        mButtonSpeak.setEnabled(true);
+                    }
+                } else {
+                    Log.e("TTS", "Initialization failed");
+                }
+            }
+        });
 
         getStory(storyId, pageNum);
 
@@ -73,6 +97,13 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
         answerButton3.setOnClickListener(StoryPage.this);
         nextButton.setOnClickListener(StoryPage.this);
         prevButton.setOnClickListener(StoryPage.this);
+
+        mButtonSpeak.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                speak();
+            }
+        });
 
     }
 
@@ -211,5 +242,9 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
         toast.show();
     }
 
+    private void speak() {
+        String text = storyPages.get(pageNum).getContent();
+        mTTS.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+    }
 
 }
