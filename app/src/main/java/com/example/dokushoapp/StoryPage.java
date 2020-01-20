@@ -247,4 +247,14 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
         mTTS.speak(text, TextToSpeech.QUEUE_FLUSH, null);
     }
 
+    @Override
+    protected void onDestroy() {
+        if (mTTS != null) {
+            mTTS.stop();
+            mTTS.shutdown();
+        }
+
+        super.onDestroy();
+    }
+
 }
