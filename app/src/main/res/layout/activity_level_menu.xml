@@ -8,6 +8,7 @@
     android:layout_height="match_parent"
     android:paddingLeft="40dp"
     android:paddingRight="40dp"
+    android:paddingTop="10dp"
     tools:context=".BooksMenu">
 
     <TextView

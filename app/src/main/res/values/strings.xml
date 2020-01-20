@@ -19,5 +19,7 @@
     <string name="owari">終わり</string>
     <string name="the_end">The End</string>
     <string name="return_to_books_menu">メインメニューに戻る\nReturn to Main Menu</string>
-    <string name="let_s_read">読んで始め！\nLet\'s read!</string>
+    <string name="let_s_read">読んで始め!\nLet\'s read!</string>
+    <string name="reading_icon">Reading icon</string>
+    <string name="app_explanation">Continuing foreign language skills through reading (starting in Japanese).</string>
 </resources>
