@@ -211,7 +211,7 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
         View toastView = toast.getView();
 
         TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
-        toastMessage.setTextSize(40);
+        toastMessage.setTextSize(35);
         toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
     }

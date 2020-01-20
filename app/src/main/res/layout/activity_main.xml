@@ -11,54 +11,66 @@
         android:id="@+id/welcome_dokusho"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="80dp"
         android:text="@string/welcome_to_dokusho"
         android:textAlignment="center"
         android:textColor="@color/colorAbsoluteBlack"
         android:textSize="35sp"
         android:textStyle="bold"
-        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/select_level"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/select_level"
-        android:textColor="@color/colorTintedGrey"
-        android:textSize="18sp"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="287dp"
+        android:layout_height="248dp"
+        android:layout_marginTop="30dp"
+        android:contentDescription="Reading icon"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcome_dokusho" />
+        app:layout_constraintTop_toBottomOf="@+id/welcome_dokusho"
+        app:srcCompat="@drawable/reading_icon" />
 
     <Button
-        android:id="@+id/lvl1_button"
+        android:id="@+id/begin_reading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:text="@string/level_1"
+        android:layout_marginTop="25dp"
+        android:text="@string/let_s_read"
+        android:background="@color/colorDarkTurq"
         android:textColor="@android:color/white"
-        android:background="@color/colorBlackGreen"
+        android:paddingRight="15dp"
+        android:paddingLeft="15dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/select_level" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-    <Button
-        android:id="@+id/lvl2_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/level_2"
-        android:textColor="@android:color/white"
-        android:background="@color/colorBlackGreen"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lvl1_button" />
+    <!--    <Button-->
+<!--        android:id="@+id/lvl1_button"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="72dp"-->
+<!--        android:text="@string/level_1"-->
+<!--        android:textColor="@android:color/white"-->
+<!--        android:background="@color/colorBlackGreen"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.498"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/select_level" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/lvl2_button"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:text="@string/level_2"-->
+<!--        android:textColor="@android:color/white"-->
+<!--        android:background="@color/colorBlackGreen"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.498"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/lvl1_button" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

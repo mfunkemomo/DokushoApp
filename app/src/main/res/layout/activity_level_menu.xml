@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorLightMint"
+    android:layout_height="match_parent"
+    android:paddingLeft="40dp"
+    android:paddingRight="40dp"
+    tools:context=".BooksMenu">
+
+    <TextView
+        android:id="@+id/level_menu_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="@string/select_level_header"
+        android:textAlignment="center"
+        android:textColor="@color/colorAbsoluteBlack"
+        android:textSize="35sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/select_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/select_level"
+        android:textColor="@color/colorTintedGrey"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/lvl1_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:text="@string/level_1"
+        android:textColor="@android:color/white"
+        android:background="@drawable/rounded_button"/>
+
+    <Button
+        android:id="@+id/lvl2_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/level_2"
+        android:textColor="@android:color/white"
+        android:background="@drawable/rounded_button" />
+
+</LinearLayout>

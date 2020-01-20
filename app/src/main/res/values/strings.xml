@@ -1,11 +1,13 @@
 <resources>
     <string name="app_name">Dokusho App</string>
-    <string name="welcome_to_dokusho">読書へよこそ\n Welcome to Dokusho</string>
-    <string name="select_level">Let\'s begin reading. Select your reading level.</string>
-    <string name="level_1">Level 1</string>
-    <string name="level_2">Level 2</string>
+    <string name="welcome_to_dokusho">読書へよこそ\nWelcome to Dokusho</string>
+    <string name="select_level_header">Level Selection</string>
+    <string name="select_level">レベルを選んで下さい。\nSelect your reading level.</string>
+    <string name="level_1">レベル 一\nLevel 1</string>
+    <string name="level_2">レベル 二\nLevel 2</string>
     <string name="level_books_header">Books level header</string>
-    <string name="select_a_book">Select a book.</string>
+    <string name="select_a_book">本を選んで下さい。開始すると、ユーザーはひらがなとカタカナと簡単な漢字の読み方をすでに知っているはずです。
+        \n\nSelect a book. Once started, users should already know how to read hiragana, katakana, and simple kanji. </string>
     <string name="book_1">Book 1</string>
     <string name="book_title">Book title</string>
     <string name="story_content">Story content here</string>
@@ -16,5 +18,6 @@
     <string name="previous_page">👈️️ 前</string>
     <string name="owari">終わり</string>
     <string name="the_end">The End</string>
-    <string name="return_to_books_menu">Return to Main Menu</string>
+    <string name="return_to_books_menu">メインメニューに戻る\nReturn to Main Menu</string>
+    <string name="let_s_read">読んで始め！\nLet\'s read!</string>
 </resources>
