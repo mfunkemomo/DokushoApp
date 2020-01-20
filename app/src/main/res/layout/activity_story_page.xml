@@ -25,6 +25,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
+        android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="8dp"
@@ -37,7 +38,7 @@
         android:id="@+id/story_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="96dp"
         android:paddingLeft="35dp"
         android:paddingRight="35dp"
         android:text="@string/story_content"
@@ -52,15 +53,16 @@
         android:id="@+id/answer_button_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/rounded_button"
-        android:text="@string/button_1"
-        android:textColor="@android:color/white"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
+        android:text="@string/button_1"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.562"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/story_content" />
+        app:layout_constraintTop_toBottomOf="@+id/speak_button" />
 
     <Button
         android:id="@+id/answer_button_2"
@@ -119,6 +121,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/answer_button_3" />
 
+    <ImageButton
+        android:id="@+id/speak_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/image_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/story_content"
+        app:srcCompat="@android:drawable/ic_btn_speak_now" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
