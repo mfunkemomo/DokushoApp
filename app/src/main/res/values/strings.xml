@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Dokusho App</string>
     <string name="welcome_to_dokusho">読書へよこそ\n Welcome to Dokusho</string>
-    <string name="select_level">Let\'s begin reading. Select your reading level.</string>
+    <string name="select_level_header">Level Selection</string>
+    <string name="select_level">Select your reading level.</string>
     <string name="level_1">Level 1</string>
     <string name="level_2">Level 2</string>
     <string name="level_books_header">Books level header</string>
@@ -17,4 +18,5 @@
     <string name="owari">終わり</string>
     <string name="the_end">The End</string>
     <string name="return_to_books_menu">Return to Main Menu</string>
+    <string name="let_s_read">Let\'s read!</string>
 </resources>

@@ -11,31 +11,19 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button selectLevel1;
-    private Button selectLevel2;
+    private Button begin_reading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        selectLevel1 = findViewById(R.id.lvl1_button);
-        selectLevel2 = findViewById(R.id.lvl2_button);
+        begin_reading = findViewById(R.id.begin_reading);
 
-        selectLevel1.setOnClickListener(new View.OnClickListener(){
+        begin_reading.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(MainActivity.this, BooksMenu.class);
-                intent.putExtra("level", 1);
-                startActivity(intent);
-            }
-        });
-
-        selectLevel2.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Intent intent = new Intent(MainActivity.this, BooksMenu.class);
-                intent.putExtra("level", 2);
+                Intent intent = new Intent(MainActivity.this, LevelMenu.class);
                 startActivity(intent);
             }
         });
