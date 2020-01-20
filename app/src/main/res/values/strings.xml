@@ -18,6 +18,6 @@
     <string name="previous_page">👈️️ 前</string>
     <string name="owari">終わり</string>
     <string name="the_end">The End</string>
-    <string name="return_to_books_menu">Return to Main Menu</string>
+    <string name="return_to_books_menu">メインメニューに戻る\nReturn to Main Menu</string>
     <string name="let_s_read">読んで始め！\nLet\'s read!</string>
 </resources>
