@@ -54,6 +54,7 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference dbStories = db.collection("Stories");
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -115,7 +116,7 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
 
 
                         SpannableString spanSentence = new SpannableString(sentence);
-                        final String finalVocab = vocab;
+                        final String finalVocab = "Translation: " + vocab;
 
                         UnderlineSpan underlineSpan = new UnderlineSpan();
                         ForegroundColorSpan fcsBlack = new ForegroundColorSpan(Color.BLACK);
@@ -210,7 +211,7 @@ public class StoryPage extends AppCompatActivity implements View.OnClickListener
         View toastView = toast.getView();
 
         TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
-        toastMessage.setTextSize(25);
+        toastMessage.setTextSize(40);
         toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
     }
