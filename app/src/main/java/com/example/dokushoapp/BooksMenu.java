@@ -4,7 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -90,8 +95,11 @@ public class BooksMenu extends AppCompatActivity {
                             if (story.getLevel() == selectedLevel){
 
                                 storyIdCollection.add(snapshots.getId());
-                                storyArrayList.add(story.getAuthor()
-                                        + " の「" + story.getTitle() + "」");
+                                String jpTitle = story.getAuthor()
+                                        + " の「" + story.getTitle() + "」\n";
+                                String enAuthor = " by " + story.getAuthorTranslation();
+                                String enTitle = "\""+story.getTitleTranslation()+"\"";
+                                storyArrayList.add(jpTitle + enTitle + enAuthor);
                             }
 
                     }
