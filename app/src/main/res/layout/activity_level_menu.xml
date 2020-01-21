@@ -8,14 +8,13 @@
     android:layout_height="match_parent"
     android:paddingLeft="40dp"
     android:paddingRight="40dp"
-    android:paddingTop="10dp"
     tools:context=".BooksMenu">
 
     <TextView
         android:id="@+id/level_menu_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="40dp"
         android:text="@string/select_level_header"
         android:textAlignment="center"
         android:textColor="@color/colorAbsoluteBlack"
