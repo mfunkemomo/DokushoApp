@@ -88,7 +88,7 @@ public class BooksMenu extends AppCompatActivity {
                     }
                     storyArrayAdapter = new ArrayAdapter<>(
                       BooksMenu.this,
-                      android.R.layout.simple_list_item_1,
+                      R.layout.list_view_layout,
                       storyArrayList
                     );
                     booksListView.setAdapter(storyArrayAdapter);

@@ -6,7 +6,6 @@
     android:orientation="vertical"
     android:paddingLeft="30dp"
     android:paddingRight="30dp"
-    android:paddingTop="10dp"
     android:background="@color/colorLightMint"
     android:layout_height="match_parent"
     tools:context=".BooksMenu">
@@ -16,7 +15,7 @@
         android:id="@+id/books_menu_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="40dp"
         android:text="@string/level_books_header"
         android:textColor="@color/colorAbsoluteBlack"
         android:textSize="35sp"
@@ -35,7 +34,6 @@
         android:id="@+id/books_list_view"
         android:layout_width="wrap_content"
         android:layout_height="499dp"
-
         android:paddingTop="30dp"
         android:textColor="@color/colorAbsoluteBlack" />
 
