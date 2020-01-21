@@ -7,7 +7,7 @@
     <string name="level_2">レベル 二\nLevel 2</string>
     <string name="level_books_header">Books level header</string>
     <string name="select_a_book">本を選んで下さい。開始すると、ユーザーはひらがなとカタカナと簡単な漢字の読み方をすでに知っているはずです。
-        \n\nSelect a book. Once started, users should already know how to read hiragana, katakana, and simple kanji. </string>
+        \nSelect a book. Once started, users should already know how to read hiragana, katakana, and simple kanji. </string>
     <string name="book_1">Book 1</string>
     <string name="book_title">Book title</string>
     <string name="story_content">Story content here</string>

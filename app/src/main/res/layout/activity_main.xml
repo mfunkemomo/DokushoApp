@@ -36,7 +36,7 @@
         android:id="@+id/begin_reading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:text="@string/let_s_read"
         android:background="@color/colorDarkTurq"
         android:textColor="@android:color/white"
