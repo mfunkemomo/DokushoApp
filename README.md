@@ -14,6 +14,7 @@ The future visionary of this app supports a variety of languages, a minimum of 5
 - Sign up for Google Cloud Platform Services for access to Firebase
 
 # Connect AndroidStudio to Firebase
+In AndroidStudio...
 - Go to Tools > Firebase > Connect your app to Firebase > Follow directions as prompted
 - Go to build.gradle(Module:app) file and add the following under DEPENDENCIES: 
   - implementation ''com.google.firebase:firebase-core:17.2.1' or higher
